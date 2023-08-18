@@ -3,13 +3,9 @@ from garagem.models import Cor, Acessorio, Modelo
 from uploader.models import Image
 
 class Veiculo(models.Model):
-    capa = models.ForeignKey(
+    capa = models.ManyToManyField(
         Image,
         related_name="+",
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True,
-        default=None,
     )
     modelo = models.ForeignKey(Modelo, on_delete=models.PROTECT, related_name="veiculos")
     cor = models.ForeignKey(Cor, on_delete=models.PROTECT, related_name="veiculos")
